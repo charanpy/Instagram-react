@@ -86,6 +86,28 @@ export const fetchNotificationSuccess = (data) => ({
   payload: data,
 });
 
-export const setNotificationFailure = () => ({
+export const fetchNotificationFailure = () => ({
   type: profileActionTypes.FETCH_NOTIFICATION_FAILURE,
+});
+
+export const createPostStart = (data) => ({
+  type: profileActionTypes.CREATE_POST_START,
+  payload: data,
+});
+
+export const createPostSuccess = () => ({
+  type: profileActionTypes.CREATE_POST_SUCCESS,
+});
+
+export const getPostStart = () => ({
+  type: profileActionTypes.GET_POST_START,
+});
+
+export const getPostSuccess = (post) => ({
+  type: profileActionTypes.GET_POST_SUCCESS,
+  payload: post,
+});
+
+export const getPostFailure = () => ({
+  type: profileActionTypes.GET_POST_FAILURE,
 });

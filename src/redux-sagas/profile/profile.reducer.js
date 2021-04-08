@@ -7,6 +7,8 @@ const initialStateProfile = {
   userProfile: null,
   realTimeNotification: false,
   notification: [],
+  posts: [],
+  postLoading: false,
 };
 
 const storeProfile = (profile) => {
@@ -48,7 +50,7 @@ const profileReducer = (state = initialStateProfile, action) => {
     case profileActionTypes.SET_USER_PROFILE:
       return {
         ...state,
-        realtimeNotification: !!action.payload.notification,
+        realTimeNotification: !!action.payload.notification,
         userProfile: storeProfile(action.payload.profile),
       };
     case profileActionTypes.SET_MODAL_VISIBLE:
@@ -70,7 +72,7 @@ const profileReducer = (state = initialStateProfile, action) => {
         ...state,
         success: false,
         loading: true,
-        realtimeNotification: false,
+        realTimeNotification: false,
       };
     case profileActionTypes.UPLOAD_IMAGE_SUCCESS:
       return {
@@ -114,7 +116,7 @@ const profileReducer = (state = initialStateProfile, action) => {
     case profileActionTypes.SET_NOTIFICATION_SUCCESS:
       return {
         ...state,
-        realtimeNotification: true,
+        realTimeNotification: true,
       };
     case profileActionTypes.FETCH_NOTIFICATION_SUCCESS:
       return {
@@ -122,6 +124,22 @@ const profileReducer = (state = initialStateProfile, action) => {
         loading: false,
         success: false,
         notification: action.payload,
+      };
+    case profileActionTypes.GET_POST_START:
+      return {
+        ...state,
+        postLoading: true,
+      };
+    case profileActionTypes.GET_POST_FAILURE:
+      return {
+        ...state,
+        postLoading: false,
+      };
+    case profileActionTypes.GET_POST_SUCCESS:
+      return {
+        ...state,
+        postLoading: false,
+        posts: action.payload,
       };
     default:
       return state;

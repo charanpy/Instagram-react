@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { HeaderContainer, IconContainer, Notify, Button } from './Header.style';
 import Brand from '../Brand/Brand.component';
 import Icon from '../Icon/Icon.component';
+import Notification from '../../MainNotification/Navigate/Navigate.container';
 import GroupModal from '../../CreateGroup/GroupModal/GroupModal.container';
 import UseModalState from '../Modal/Modal.state';
 
@@ -24,20 +25,27 @@ const Header = ({ history, notify, username }) => {
             active={history.location.pathname === '/'}
           />
         </Link>
-        <Link to='/direct/message'>
-          <Icon
-            className='fas fa-paper-plane'
-            active={history.location.pathname === '/direct/message'}
-          />
-          {notify ? <Notify>{notify}</Notify> : <div />}
-        </Link>
         <Button onClick={toggleModal}>
           <Icon className='fas fa-search' />
         </Button>
+        <Notification />
+        <Link to='/create/post'>
+          <Icon
+            className='fas fa-plus-circle'
+            active={history.location.pathname === '/create/post'}
+          />
+        </Link>
         <Link to={`/${username}`}>
           <Icon
             className='fas fa-user'
             active={history.location.pathname === `/${username}`}
+          />
+          {notify ? <Notify>{notify}</Notify> : <div />}
+        </Link>
+        <Link to='/direct/message'>
+          <Icon
+            className='fas fa-paper-plane'
+            active={history.location.pathname === '/direct/message'}
           />
           {notify ? <Notify>{notify}</Notify> : <div />}
         </Link>

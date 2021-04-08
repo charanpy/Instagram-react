@@ -11,6 +11,12 @@ import {
   getProfileSuccess,
   followSuccess,
   followFailure,
+  fetchNotificationSuccess,
+  fetchNotificationFailure,
+  setNotificationSuccess,
+  createPostSuccess,
+  getPostSuccess,
+  getPostFailure,
 } from './profile.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
 
@@ -117,11 +123,95 @@ export function* followStart({ payload }) {
 export function* onFollowStart() {
   yield takeLatest(profileActionTypes.FOLLOW_START, followStart);
 }
+
+export function* getNotification() {
+  try {
+    const response = yield call(
+      PrivateApiRoute,
+      'profile/notifications',
+      null,
+      'get',
+      true,
+      false
+    );
+    console.log(response);
+    yield put(fetchNotificationSuccess(response.data?.notifications));
+  } catch (error) {
+    console.log(error.response);
+    yield put(fetchNotificationFailure());
+  }
+}
+
+export function* onGetNotificationStart() {
+  yield takeLatest(
+    profileActionTypes.FETCH_NOTIFICATION_START,
+    getNotification
+  );
+}
+
+export function* setNotification() {
+  yield put(setNotificationSuccess());
+}
+
+export function* onSetNotificationStart() {
+  yield takeLatest(profileActionTypes.SET_NOTIFICATION_START, setNotification);
+}
+
+export function* createPost({ payload }) {
+  try {
+    const response = yield call(
+      PrivateApiRoute,
+      'post/',
+      payload,
+      'post',
+      true,
+      true
+    );
+    console.log(response);
+    yield put(createPostSuccess());
+    alert('Post created successfully');
+  } catch (error) {
+    console.log(error, error.response);
+    const id = getUniqueId();
+    yield put(setAlert(id, 'Failed to upload Image. Please try again'));
+  }
+}
+
+export function* onCreatePostStart() {
+  yield takeLatest(profileActionTypes.CREATE_POST_START, createPost);
+}
+
+export function* getPost() {
+  try {
+    const response = yield call(
+      PrivateApiRoute,
+      'post/',
+      null,
+      'get',
+      true,
+      false
+    );
+    console.log(response);
+    yield put(getPostSuccess(response.data.posts));
+  } catch (error) {
+    console.log(error);
+    yield put(getPostFailure());
+  }
+}
+
+export function* onGetPostStart() {
+  yield takeLatest(profileActionTypes.GET_POST_START, getPost);
+}
+
 export function* profileSagas() {
   yield all([
     call(onGetProfileStart),
     call(onUploadImageStart),
     call(onEditProfileStart),
     call(onFollowStart),
+    call(onGetNotificationStart),
+    call(onSetNotificationStart),
+    call(onCreatePostStart),
+    call(onGetPostStart),
   ]);
 }

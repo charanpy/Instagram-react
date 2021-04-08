@@ -28,6 +28,16 @@ export const selectIsLoading = createSelector(
   (profile) => profile.loading
 );
 
+export const selectPostLoading = createSelector(
+  [selectProfile],
+  (profile) => profile.postLoading
+);
+
+export const selectPosts = createSelector(
+  [selectProfile],
+  (profile) => profile.posts
+);
+
 export const selectIsModalVisible = createSelector(
   [selectProfile],
   (profile) => profile.modal
@@ -68,4 +78,14 @@ export const selectUsername = createSelector(
 export const selectFetchProfile = createSelector(
   [selectProfile],
   (profile) => !profile.profile
+);
+
+export const selectRealtimeNotification = createSelector(
+  [selectProfile],
+  (profile) => profile.realTimeNotification
+);
+
+export const selectNotification = createSelector(
+  [selectProfile],
+  (profile) => profile.notification
 );

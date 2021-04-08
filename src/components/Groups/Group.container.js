@@ -27,4 +27,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   displayGroupStart: (id) => dispatch(displayGroupStart(id)),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(GroupContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(React.memo(GroupContainer));

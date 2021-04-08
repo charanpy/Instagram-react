@@ -12,6 +12,7 @@ import {
   loadUserStart,
   setAppLoadingFalse,
 } from './redux-sagas/user/user.action';
+import { setNotificationStart } from './redux-sagas/profile/profile.action';
 import { setThemeLightStart } from './redux-sagas/theme/theme.action';
 import { selectBackground } from './redux-sagas/theme/theme.selector';
 import { SocketContext } from './context/socket';
@@ -30,10 +31,11 @@ const AppContainer = ({
   AppTheme: theme,
   getRealtimeMessageStart: getMessage,
   getNotificationStart: getNotification,
+  setNotificationStart: setNotification,
 }) => {
   const { socket } = useContext(SocketContext);
   UseAuth(loadUser, setAuth, history, getNotification);
-  UseSocket(socket, getMessage);
+  UseSocket(socket, getMessage, setNotification);
   UseTheme(setThemeLight);
   return !appLoading ? <App theme={theme} /> : <Spinner />;
 };
@@ -49,6 +51,7 @@ AppContainer.propTypes = {
   AppTheme: PropTypes.string.isRequired,
   getRealtimeMessageStart: PropTypes.func.isRequired,
   getNotificationStart: PropTypes.func.isRequired,
+  setNotificationStart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -62,6 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
   getRealtimeMessageStart: (groupId, message, socket) =>
     dispatch(getRealtimeMessageStart(groupId, message, socket)),
   getNotificationStart: () => dispatch(getNotificationStart()),
+  setNotificationStart: () => dispatch(setNotificationStart()),
 });
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(AppContainer)

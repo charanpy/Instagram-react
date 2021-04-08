@@ -109,3 +109,16 @@ export const EditProfile = PropTypes.shape({
   bio: PropTypes.string,
   website: PropTypes.string,
 });
+
+export const Notify = PropTypes.oneOfType([
+  PropTypes.array,
+  PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      user: ProfilePropTypes,
+      createdAt: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      seen: PropTypes.bool.isRequired,
+    })
+  ),
+]);

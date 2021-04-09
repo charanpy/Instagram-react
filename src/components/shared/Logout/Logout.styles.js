@@ -7,6 +7,6 @@ export const Logout = styled(Button)`
 
 export const LogoutContainer = styled.div`
   position: absolute;
-  bottom: 5%;
+  top: 10%;
   right: 5%;
 `;

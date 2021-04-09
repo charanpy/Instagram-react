@@ -111,3 +111,13 @@ export const getPostSuccess = (post) => ({
 export const getPostFailure = () => ({
   type: profileActionTypes.GET_POST_FAILURE,
 });
+
+export const likePostStart = (data) => ({
+  type: profileActionTypes.LIKE_POST_START,
+  payload: data,
+});
+
+export const likePostSuccess = (data) => ({
+  type: profileActionTypes.LIKE_POST_SUCCESS,
+  payload: data,
+});

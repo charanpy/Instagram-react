@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const HomeContainer = styled.main`
   display: flex;
   justify-content: center;
-  height: 90vh;
+  min-height: 90vh;
+  overflow: scroll;
 `;
 
 export const Wrap = styled.div`

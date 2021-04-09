@@ -20,6 +20,13 @@ const storeProfile = (profile) => {
   }
   return profile;
 };
+// TODO LIKES SCHEMA MAP DS
+const likePost = (state, postId, post) => {
+  const postIndex = state.findIndex((posts) => posts._id === postId);
+  const updatedPost = [...state];
+  updatedPost[postIndex] = post;
+  return updatedPost;
+};
 
 const profileReducer = (state = initialStateProfile, action) => {
   switch (action.type) {
@@ -140,6 +147,15 @@ const profileReducer = (state = initialStateProfile, action) => {
         ...state,
         postLoading: false,
         posts: action.payload,
+      };
+    case profileActionTypes.LIKE_POST_SUCCESS:
+      return {
+        ...state,
+        posts: likePost(
+          state.posts,
+          action.payload.postId,
+          action.payload.post
+        ),
       };
     default:
       return state;

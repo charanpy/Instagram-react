@@ -38,7 +38,7 @@ const GroupModal = ({
                 <DisplayUser
                   key={_id}
                   onClick={() =>
-                    profile ? navigate(`/${name}`) : createGroup(_id, id)
+                    profile ? navigate(`/${username}`) : createGroup(_id, id)
                   }
                   type='create'
                   group={{

@@ -4,6 +4,7 @@ const Notification = styled.p`
   font-size: 1.2rem;
   font-family: cursive;
   font-weight: 500;
+color: white;
 `;
 
 export default Notification;

@@ -17,6 +17,7 @@ import {
   createPostSuccess,
   getPostSuccess,
   getPostFailure,
+  likePostSuccess,
 } from './profile.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
 
@@ -203,6 +204,41 @@ export function* onGetPostStart() {
   yield takeLatest(profileActionTypes.GET_POST_START, getPost);
 }
 
+export function* likePost({ payload }) {
+  try {
+    const { id, postId, socket, userId, isLiked } = payload;
+    console.log(isLiked);
+    const res = yield call(
+      PrivateApiRoute,
+      `post/like/${postId}`,
+      { data: 'like' },
+      'post',
+      true,
+      false
+    );
+    console.log(res);
+    yield put(
+      likePostSuccess({
+        postId: res.data.post._id,
+        post: res.data.post,
+      })
+    );
+    if (socket && id !== userId && !isLiked) {
+      socket.emit('notification', {
+        to: id,
+        user: userId,
+        post: postId,
+      });
+    }
+  } catch (error) {
+    console.log(error, error.response);
+  }
+}
+
+export function* onLikePostStart() {
+  yield takeLatest(profileActionTypes.LIKE_POST_START, likePost);
+}
+
 export function* profileSagas() {
   yield all([
     call(onGetProfileStart),
@@ -213,5 +249,6 @@ export function* profileSagas() {
     call(onSetNotificationStart),
     call(onCreatePostStart),
     call(onGetPostStart),
+    call(onLikePostStart),
   ]);
 }

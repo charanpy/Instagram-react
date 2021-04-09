@@ -11,7 +11,8 @@ const Logout = ({ signOutStart: logout }) => (
         danger
         text='LOGOUT'
         handleSubmit={logout}
-        style={{ margin: 0 }}
+        style={{ margin: 0, width: '10rem' }}
+        width={9}
       />
     </LogoutContainer>
   </>

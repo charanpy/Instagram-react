@@ -2,22 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectNotification } from '../../redux-sagas/profile/profile.selector';
-import { Notify } from '../../helpers/helpers';
 import { Container } from './Notification.style';
 import Notification from './Notification.component';
 
+/* eslint-disable */
 const NotificationContainer = ({ notification }) => {
   console.log(notification);
   return (
     <Container>
       {notification.length &&
-        notification.map((notify) => <Notification notification={notify} />)}
+        notification.map((notify) => (
+          <Notification key={notify._id} notification={notify} />
+        ))}
     </Container>
   );
-};
-
-NotificationContainer.propTypes = {
-  notification: Notify,
 };
 
 NotificationContainer.defaultProps = {

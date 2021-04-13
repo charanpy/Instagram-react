@@ -20,14 +20,21 @@ const UseSocket = (socket, send, setNotification) => {
         ({ groupId, message }) => sendRealTimeMessage(groupId, message)
         // eslint-disable-next-line
       );
+      return () => {
+        socket.off('message', sendRealTimeMessage);
+      };
     }
+    return false;
   }, [socket, sendRealTimeMessage]);
 
   useEffect(() => {
     if (socket) {
-      console.log(socket, socket?.on);
       socket.on('notification', sendRealTimeNotification);
+      return () => {
+        socket.off('notification', sendRealTimeNotification);
+      };
     }
+    return false;
   }, [socket, sendRealTimeNotification]);
 };
 

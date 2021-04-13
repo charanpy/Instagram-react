@@ -118,3 +118,7 @@ export const setMessageSeenSuccess = () => ({
 export const setMessageSeenFailure = () => ({
   type: groupActionTypes.SET_MESSAGE_SEEN_FAILURE,
 });
+
+export const clearGroup = () => ({
+  type: groupActionTypes.CLEAR_GROUP,
+});

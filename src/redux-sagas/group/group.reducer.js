@@ -114,6 +114,8 @@ const groupReducer = (state = initialState, action) => {
         fetchNotifications: false,
         notifications: action.payload,
       };
+    case groupActionTypes.CLEAR_GROUP:
+      return initialState;
     default:
       return state;
   }

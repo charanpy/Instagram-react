@@ -13,7 +13,7 @@ export const SocketProvider = ({ children }) => {
     if (firstRender?.current) {
       console.log('socket init');
       setSocket(
-        io('http://localhost:3001/', {
+        io('https://instamernclone.herokuapp.com/', {
           transports: ['websocket'],
         })
       );
@@ -22,6 +22,7 @@ export const SocketProvider = ({ children }) => {
     return () => {
       if (socket) {
         socket.emit('disconnected');
+        socket.removeAllListeners();
         socket.disconnect();
       }
     };

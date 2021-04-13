@@ -17,6 +17,9 @@ export const UserDetailWrap = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 5rem;
+  @media (max-width: 750px) {
+    margin-left: 1rem;
+  }
 `;
 
 export const UsernameWrap = styled.div`

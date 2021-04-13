@@ -8,6 +8,9 @@ import './index.css';
 import App from './App.container';
 import reportWebVitals from './reportWebVitals';
 
+if (process.env.NODE_ENV === 'development') {
+  console.log = () => {};
+}
 ReactDOM.render(
   <Provider store={store}>
     <SocketProvider>

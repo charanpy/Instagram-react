@@ -27,6 +27,7 @@ const PostContainer = ({ posts, id: userId, likePostStart: likePost }) => {
             // 125702
           }) => (
             <DisplayPost
+              key={postId}
               post={image[0] && image[0]?.url}
               name={name}
               username={username}

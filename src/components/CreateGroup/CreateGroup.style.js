@@ -10,6 +10,9 @@ export const Container = styled.section`
   width: 45%;
   height: 100%;
   ${sharedBorder};
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

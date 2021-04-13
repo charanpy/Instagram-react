@@ -7,11 +7,6 @@ const MessageInput = ({ message, handleSubmit }) => {
   console.log('Input');
   return (
     <Footer>
-      <Icon as='button' className='far fa-laugh' />
-      <label htmlFor='send_file'>
-        <Icon className='fas fa-paperclip' />
-        <input id='send_file' type='file' />
-      </label>
       <Input
         name='message'
         placeholder='Type a message'

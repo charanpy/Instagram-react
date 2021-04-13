@@ -10,6 +10,11 @@ export const HeaderContainer = styled.header`
   ${sharedBorder};
 `;
 
+export const Name = styled.div`
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
 export const Button = styled.button`
   outline: none;
   border: none;

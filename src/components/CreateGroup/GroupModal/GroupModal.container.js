@@ -36,7 +36,7 @@ const GroupModalContainer = ({
         loading: true,
       }));
       axios
-        .get('http://localhost:3001/api/v1/profile/search/', {
+        .get('https://instamernclone.herokuapp.com/api/v1/profile/search/', {
           cancelToken: new CancelToken((c) => {
             cancel = c;
           }),

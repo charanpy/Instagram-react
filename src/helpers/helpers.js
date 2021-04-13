@@ -15,11 +15,18 @@ export const Input = PropTypes.oneOfType([
   PropTypes.shape({ current: PropTypes.elementType }),
 ]);
 
+export const Photo = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.shape({
+    public_id: PropTypes.string,
+    secure_url: PropTypes.string,
+  }),
+]);
 export const ProfilePropTypes = PropTypes.shape({
   _id: PropTypes.string,
   name: PropTypes.string,
   user: PropTypes.string,
-  photo: PropTypes.string,
+  photo: Photo,
 });
 
 export const Group = PropTypes.shape({
@@ -31,14 +38,6 @@ export const Group = PropTypes.shape({
 export const GroupPropTypes = PropTypes.objectOf(Group);
 
 export const String = PropTypes.string;
-
-export const Photo = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.shape({
-    public_id: PropTypes.string,
-    secure_url: PropTypes.string,
-  }),
-]);
 
 export const historyProp = PropTypes.shape({
   push: PropTypes.func.isRequired,
@@ -91,12 +90,12 @@ export const UserProfilePropTypes = PropTypes.shape({
   requests: PropTypes.array,
   followers: PropTypes.objectOf(
     PropTypes.shape({
-      user: PropTypes.object,
+      user: PropTypes.string,
     })
   ),
   following: PropTypes.objectOf(
     PropTypes.shape({
-      user: PropTypes.object,
+      user: PropTypes.string,
     })
   ),
   bio: PropTypes.string,
@@ -110,6 +109,18 @@ export const EditProfile = PropTypes.shape({
   website: PropTypes.string,
 });
 
+export const Post = PropTypes.shape({
+  caption: PropTypes.string,
+  commentsPost: PropTypes.array,
+  createAt: PropTypes.string,
+  likes: PropTypes.array,
+  id: PropTypes.string,
+  _id: PropTypes.string,
+  profile: UserProfilePropTypes,
+  hashtag: PropTypes.array,
+  image: PropTypes.array,
+});
+
 export const Notify = PropTypes.oneOfType([
   PropTypes.array,
   PropTypes.arrayOf(
@@ -119,6 +130,8 @@ export const Notify = PropTypes.oneOfType([
       createdAt: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       seen: PropTypes.bool.isRequired,
+      _id: PropTypes.string,
+      // post: Post,
     })
   ),
 ]);

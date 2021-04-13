@@ -5,6 +5,9 @@ export const ActivityContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   margin-top: 1.8rem;
+  @media (max-width: 750px) {
+    width: 90%;
+  }
 `;
 export const UserActivityWrap = styled.div`
   display: flex;

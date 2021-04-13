@@ -1,6 +1,7 @@
 import React from 'react';
-import { Notify } from '../../helpers/helpers';
 import DisplayFollow from './FollowNotification.component';
+
+/* eslint-disable */
 
 const Notification = ({ notification }) => (
   <DisplayFollow
@@ -10,10 +11,6 @@ const Notification = ({ notification }) => (
     createdAt={notification.createdAt}
   />
 );
-
-Notification.propTypes = {
-  notification: Notify,
-};
 
 Notification.defaultProps = {
   notification: {},

@@ -10,6 +10,10 @@ const MessageWrapper = styled.section`
   flex-direction: column;
   justify-content: space-between;
   ${sharedBorder};
+
+  @media (max-width: 750px) {
+    width: auto;
+  }
 `;
 
 export default MessageWrapper;

@@ -12,6 +12,7 @@ import {
   signOutFailure,
 } from './user.action';
 import { setUserProfile, emptyUpProfile } from '../profile/profile.action';
+import { clearGroup } from '../group/group.action';
 import { setAlert } from '../alert/alert.action';
 import { generateUniqueId as getUniqueId } from '../../helpers/helpers';
 
@@ -100,7 +101,7 @@ export function* onLogin(payload) {
   } catch (e) {
     const id = getUniqueId();
     yield put(loginFailure());
-    console.log(e);
+    console.log(e, e?.response);
     yield put(setAlert(id, e.response.data.message));
   }
 }
@@ -111,8 +112,9 @@ export function* onLoginStart() {
 
 export function* onSignOut() {
   try {
-    yield put(signOutSuccess());
     yield put(emptyUpProfile());
+    yield put(clearGroup());
+    yield put(signOutSuccess());
   } catch (e) {
     yield put(signOutFailure());
   }

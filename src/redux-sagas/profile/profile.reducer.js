@@ -28,6 +28,31 @@ const likePost = (state, postId, post) => {
   return updatedPost;
 };
 
+const optimizeLikePost = (state, postId, userId) => {
+  const getPostIndex = state.findIndex((posts) => posts._id === postId);
+  if (state[getPostIndex].likes.includes(userId)) {
+    const likes = state[getPostIndex].likes.filter((like) => like !== userId);
+    console.log(likes, 33);
+    const modifiedLike = {
+      ...state[getPostIndex],
+      likes,
+    };
+    const postRef = [...state];
+    postRef[getPostIndex] = modifiedLike;
+    return postRef;
+  }
+  const like = [...state[getPostIndex].likes, userId];
+  console.log(like);
+  const addedLikePost = {
+    ...state[getPostIndex],
+    likes: like,
+  };
+  const allPosts = [...state];
+
+  allPosts[getPostIndex] = addedLikePost;
+  return allPosts;
+};
+
 const profileReducer = (state = initialStateProfile, action) => {
   switch (action.type) {
     case profileActionTypes.GET_PROFILE_START:
@@ -147,6 +172,15 @@ const profileReducer = (state = initialStateProfile, action) => {
         ...state,
         postLoading: false,
         posts: action.payload,
+      };
+    case profileActionTypes.LIKE_POST_START:
+      return {
+        ...state,
+        posts: optimizeLikePost(
+          state.posts,
+          action.payload.postId,
+          action.payload.userId
+        ),
       };
     case profileActionTypes.LIKE_POST_SUCCESS:
       return {

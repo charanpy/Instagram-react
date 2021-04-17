@@ -11,9 +11,8 @@ export const SocketProvider = ({ children }) => {
   const firstRender = useRef(true);
   useEffect(() => {
     if (firstRender?.current) {
-      console.log('socket init');
       setSocket(
-        io('https://instamernclone.herokuapp.com/', {
+        io(process.env.REACT_APP_BASE_API, {
           transports: ['websocket'],
         })
       );

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -16,16 +16,24 @@ const FollowContainer = ({
   id,
 }) => {
   console.log('follow');
+  const [followAction, setFollowAction] = useState(null);
   const { socket } = useContext(SocketContext);
   const followUser = () => {
     if (!following[username]) {
+      setFollowAction(true);
       follow(_id, username, socket, 'follow', id);
       return false;
     }
+    setFollowAction(false);
     follow(_id, username, null, 'unfollow');
     return true;
   };
-  return <Follow follow={followUser} hasfollowed={!!following[username]} />;
+  return (
+    <Follow
+      follow={followUser}
+      hasfollowed={followAction === null ? !!following[username] : followAction}
+    />
+  );
 };
 
 FollowContainer.propTypes = {

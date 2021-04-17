@@ -8,7 +8,7 @@ import './index.css';
 import App from './App.container';
 import reportWebVitals from './reportWebVitals';
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   console.log = () => {};
 }
 ReactDOM.render(

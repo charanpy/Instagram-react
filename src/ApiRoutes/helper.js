@@ -6,7 +6,7 @@ const ApiRequestMethod = {
   get: axios.get,
   patch: axios.patch,
   url: 'http://localhost:3001/api/v1/',
-  mainURL: 'https://instamernclone.herokuapp.com/api/v1/',
+  mainURL: process.env.REACT_APP_API,
 };
 
 export default ApiRequestMethod;

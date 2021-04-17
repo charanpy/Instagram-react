@@ -1,5 +1,4 @@
 import React from 'react';
-// import formatISO from 'date-fns/formatISO';
 import { formatDistance } from 'date-fns';
 import ProfileImage from '../../shared/ProfileImage/ProfileImage.component';
 import { ShowNotif } from '../../MainNotification/Notification.style';
@@ -18,7 +17,6 @@ import {
 } from '../Post.style';
 
 const Post = ({
-  /* eslint-disable */
   likes,
   post,
   name,

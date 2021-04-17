@@ -6,7 +6,6 @@ import { selectAlertMessage } from '../../redux-sagas/alert/alert.selector';
 import Toaster from './Toaster.component';
 
 const Alert = ({ alert }) =>
-  // eslint-disable-next-line
   alert.length &&
   alert.map(({ id, msg, success }) => (
     <div key={id}>

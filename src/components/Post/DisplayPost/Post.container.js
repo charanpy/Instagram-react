@@ -6,7 +6,7 @@ import { selectProfileId } from '../../../redux-sagas/profile/profile.selector';
 import DisplayPost from './Post.component';
 import { SocketContext } from '../../../context/socket';
 import { PostsContainer } from '../Post.style';
-/* eslint-disable */
+
 const PostContainer = ({ posts, id: userId, likePostStart: likePost }) => {
   console.log('');
   const submitHandler = (id, postId, isLiked) => {
@@ -24,7 +24,6 @@ const PostContainer = ({ posts, id: userId, likePostStart: likePost }) => {
             profile: { name, username, photo, _id },
             likes,
             _id: postId,
-            // 125702
           }) => (
             <DisplayPost
               key={postId}

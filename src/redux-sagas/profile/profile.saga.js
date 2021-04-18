@@ -1,4 +1,4 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, takeEvery } from 'redux-saga/effects';
 import { profileActionTypes } from './profile.type';
 import { generateUniqueId as getUniqueId } from '../../helpers/helpers';
 import { setAlert } from '../alert/alert.action';
@@ -122,7 +122,7 @@ export function* followStart({ payload }) {
 }
 
 export function* onFollowStart() {
-  yield takeLatest(profileActionTypes.FOLLOW_START, followStart);
+  yield takeEvery(profileActionTypes.FOLLOW_START, followStart);
 }
 
 export function* getNotification() {
@@ -236,7 +236,7 @@ export function* likePost({ payload }) {
 }
 
 export function* onLikePostStart() {
-  yield takeLatest(profileActionTypes.LIKE_POST_START, likePost);
+  yield takeEvery(profileActionTypes.LIKE_POST_START, likePost);
 }
 
 export function* profileSagas() {

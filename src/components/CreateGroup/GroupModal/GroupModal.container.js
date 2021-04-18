@@ -42,6 +42,7 @@ const GroupModalContainer = ({
         users: defaultUsers,
       }));
     }
+    // eslint-disable-next-line
   }, [users.length, defaultUsers.length]);
   useEffect(() => {
     if (cancel !== undefined) {

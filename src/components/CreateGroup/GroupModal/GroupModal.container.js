@@ -23,8 +23,17 @@ const GroupModalContainer = ({
     input: '',
     loading: false,
     users: [],
+    defaultUsers: [],
   });
   const { input, loading } = searchUser;
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API}profile/`).then((res) =>
+      setSearchUser((user) => ({
+        ...user,
+        defaultUsers: res.data.profiles,
+      }))
+    );
+  }, []);
   useEffect(() => {
     if (cancel !== undefined) {
       cancel();

@@ -10,7 +10,7 @@ const GroupModal = ({
   modal,
   toggleModal,
   handleChange,
-  searchUser: { input, users },
+  searchUser: { input, users, defaultUsers },
   loading,
   createGroup,
   id,
@@ -33,7 +33,7 @@ const GroupModal = ({
           <Spinner />
         ) : (
           <UsersContainer>
-            {users.length &&
+            {users.length || defaultUsers.length &&
               users.map(({ photo, user, username, _id, name }) => (
                 <DisplayUser
                   key={_id}

@@ -33,7 +33,7 @@ const GroupModal = ({
           <Spinner />
         ) : (
           <UsersContainer>
-            {users.length || defaultUsers.length &&
+            {users.length &&
               users.map(({ photo, user, username, _id, name }) => (
                 <DisplayUser
                   key={_id}

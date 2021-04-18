@@ -43,7 +43,7 @@ const GroupModalContainer = ({
       }));
     }
     // eslint-disable-next-line
-  }, [users.length, defaultUsers.length]);
+  }, [users.length, defaultUsers.length, input]);
   useEffect(() => {
     if (cancel !== undefined) {
       cancel();

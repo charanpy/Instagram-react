@@ -1,4 +1,4 @@
-import { takeLatest, put, all, call, takeEvery } from 'redux-saga/effects';
+import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { profileActionTypes } from './profile.type';
 import { generateUniqueId as getUniqueId } from '../../helpers/helpers';
 import { setAlert } from '../alert/alert.action';
@@ -20,8 +20,6 @@ import {
   likePostSuccess,
 } from './profile.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
-
-const delay = ms => new Promise(res => setTimeout(res, ms))
 
 export function* uploadImage({ payload }) {
   try {
@@ -124,7 +122,7 @@ export function* followStart({ payload }) {
 }
 
 export function* onFollowStart() {
-  yield takeEvery(profileActionTypes.FOLLOW_START, followStart);
+  yield takeLatest(profileActionTypes.FOLLOW_START, followStart);
 }
 
 export function* getNotification() {
@@ -209,8 +207,6 @@ export function* onGetPostStart() {
 export function* likePost({ payload }) {
   try {
     const { id, postId, socket, userId, isLiked } = payload;
-    console.log(isLiked);
-    call(delay, 1000);
     const res = yield call(
       PrivateApiRoute,
       `post/like/${postId}`,
@@ -239,7 +235,7 @@ export function* likePost({ payload }) {
 }
 
 export function* onLikePostStart() {
-  yield takeEvery(profileActionTypes.LIKE_POST_START, likePost);
+  yield takLatest(profileActionTypes.LIKE_POST_START, likePost);
 }
 
 export function* profileSagas() {

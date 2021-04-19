@@ -21,6 +21,8 @@ import {
 } from './profile.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
 
+const delay = ms => new Promise(res => setTimeout(res, ms))
+
 export function* uploadImage({ payload }) {
   try {
     const { data, type } = payload;
@@ -208,6 +210,7 @@ export function* likePost({ payload }) {
   try {
     const { id, postId, socket, userId, isLiked } = payload;
     console.log(isLiked);
+    call(delay, 1000);
     const res = yield call(
       PrivateApiRoute,
       `post/like/${postId}`,

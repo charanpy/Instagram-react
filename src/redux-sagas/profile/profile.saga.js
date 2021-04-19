@@ -235,7 +235,7 @@ export function* likePost({ payload }) {
 }
 
 export function* onLikePostStart() {
-  yield takLatest(profileActionTypes.LIKE_POST_START, likePost);
+  yield takeLatest(profileActionTypes.LIKE_POST_START, likePost);
 }
 
 export function* profileSagas() {

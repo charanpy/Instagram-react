@@ -53,6 +53,7 @@ export const Caption = styled.p`
 export const Post = styled.img`
   height: 40%;
   min-width: 30rem;
+  max-width: 30rem;
   margin-bottom: 1rem;
 `;
 

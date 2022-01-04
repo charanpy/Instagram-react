@@ -41,7 +41,7 @@ const AuthContainer = ({
     const isValid = validate({ email, password, confirmPassword }, signIn);
     if (!isValid.valid) {
       setInputNull();
-      setAlert(isValid.message);
+      setAlert(signIn ? 'Invalid Credentials' : isValid.message);
       return false;
     }
     if (signIn) {

@@ -1,4 +1,4 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, delay } from 'redux-saga/effects';
 import PrivateApiRoutes from '../../ApiRoutes/PrivateApi';
 import { userActionTypes } from './user.type';
 import {
@@ -13,7 +13,7 @@ import {
 } from './user.action';
 import { setUserProfile, emptyUpProfile } from '../profile/profile.action';
 import { clearGroup } from '../group/group.action';
-import { setAlert } from '../alert/alert.action';
+import { removeAlert, setAlert } from '../alert/alert.action';
 import { generateUniqueId as getUniqueId } from '../../helpers/helpers';
 
 export function* registerAccount(payload) {
@@ -42,6 +42,8 @@ export function* registerAccount(payload) {
     console.log(e, e?.response, e?.response?.data);
     yield put(registerFailure());
     yield put(setAlert(id, e.response.data.message));
+    yield delay(6000);
+    yield put(removeAlert());
   }
 }
 
@@ -103,6 +105,8 @@ export function* onLogin(payload) {
     yield put(loginFailure());
     console.log(e, e?.response);
     yield put(setAlert(id, e.response.data.message));
+    yield delay(6000);
+    yield put(removeAlert());
   }
 }
 

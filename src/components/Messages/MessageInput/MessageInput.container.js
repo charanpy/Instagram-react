@@ -12,7 +12,8 @@ const MessageInputContainer = ({
 }) => {
   const inputRef = useRef(null);
   const { socket } = useContext(SocketContext);
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const message = inputRef?.current?.value;
     if (message) {
       sendMessage(groupId, message, true, socket, profileId);

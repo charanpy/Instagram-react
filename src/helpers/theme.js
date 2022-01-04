@@ -8,7 +8,7 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  background: 'rgba(0,0,0,1)',
+  background: '#18181d',
   text: '#fff',
   textLight: 'rgba(255,255,255,0.9)',
   mode: 1,

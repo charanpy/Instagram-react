@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const Brand = styled.p`
-  font-family: 'Billabong';
-  font-size: 3.6rem;
+const Brand = styled.h1`
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
   color: ${(props) => props.theme.text};
   @media (max-width: 720px) {
     font-family: 'Open Sans Condensed';

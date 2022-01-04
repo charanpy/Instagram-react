@@ -19,6 +19,7 @@ export const Count = styled.p`
   font-weight: bold;
   margin-bottom: 0.8rem;
   align-self: center;
+  font-family: sans-serif;
 `;
 
 export const Description = styled.p`

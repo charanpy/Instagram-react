@@ -11,6 +11,7 @@ export const NavigateUser = styled(Link)`
 export const ShowNotif = styled.i`
   font-size: 2.3rem;
   margin-right: 2.8rem;
+  padding-left: 0;
   cursor: pointer;
   color: ${(props) => (props.hasNotification ? '#f2003c' : props.theme.icon)};
 `;

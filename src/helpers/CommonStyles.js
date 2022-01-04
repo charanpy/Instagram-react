@@ -2,7 +2,10 @@ import styled, { css, createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif;
+     */
+    font-family: 'Alegreya Sans', serif;
+    font-weight: 400;
     color: ${(props) => props.theme.text};
     background: ${(props) => props.theme.background};
   }

@@ -7,10 +7,12 @@ export const Message = styled.input`
   border-radius: 25px;
   background: transparent;
   color: ${(props) => (props.theme.mode ? 'rgba(255,255,255,0.8)' : '#212529')};
+  flex-grow: 1;
 
   &::placeholder {
-    color: ${(props) =>
-      props.theme.mode ? 'rgba(255,255,255,0.8)' : '#212529'};
+    color: ${(props) => (props.theme.mode ? 'rgba(255,255,255,0.8)' : '#ccc')};
+    font-family: inherit;
+    font-size: 1.3rem;
   }
   &:active,
   &:focus {
@@ -20,7 +22,7 @@ export const Message = styled.input`
         : '1px solid #212529'};
   }
 `;
-export const Footer = styled.footer`
+export const Footer = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;

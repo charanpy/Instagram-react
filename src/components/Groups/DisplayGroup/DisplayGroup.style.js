@@ -14,7 +14,7 @@ export const GroupName = styled.p`
   font-size: 1.8rem;
   color: ${(props) => props.theme.textLight};
   text-transform: capitalize;
-  font-weight: 600;
+  font-weight: 400;
 `;
 
 export const Notification = styled.p`
@@ -29,6 +29,8 @@ export const CreateButton = styled.button`
   background: transparent;
   transition: all 300ms ease-in-out;
   cursor: pointer;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: 300;
   &:hover {
     background: #212529;
   }

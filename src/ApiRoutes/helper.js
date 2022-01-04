@@ -5,7 +5,7 @@ const ApiRequestMethod = {
   put: axios.put,
   get: axios.get,
   patch: axios.patch,
-  url: 'http://localhost:3001/api/v1/',
+  url: process.env.REACT_APP_API,
   mainURL: process.env.REACT_APP_API,
 };
 

@@ -5,6 +5,8 @@ const GroupContainer = styled.section`
   height: 100%;
   width: 30%;
   ${sharedBorder};
+  overflow-y: scroll;
+
   @media (max-width: 750px) {
     width: 100%;
   }

@@ -26,12 +26,26 @@ export const Message = styled.div`
   font-size: 1.42rem;
   line-height: 1.5rem;
   position: relative;
-  min-width: 20%;
-  padding: 1rem;
-  background: #212;
-  border-radius: 25px;
+  min-width: 10%;
+  max-width: 20%;
+  word-break: break-word;
+  padding: 1.3rem;
+  font-family: inherit;
+  background: #1e90ff;
+  font-weight: bold;
+  border-radius: 16px;
+  color: white;
+  ${(props) =>
+    !props.position &&
+    `
+      align-items: flex-start;
+  background: #333;
+  color: rgba(255,255,255,0.7);
+
+    `}
   position: relative;
   margin-bottom: 1rem;
+  /* color: inherit; */
 `;
 
 export const SeenIcon = styled.div`
@@ -41,10 +55,11 @@ export const SeenIcon = styled.div`
 `;
 export const Chat = styled.span`
   display: block;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: ${(props) => props.theme.color};
-  font-family: 'NimbusSanTW01Con';
+  /* font-family: 'NimbusSanTW01Con'; */
+  font-weight: 300;
   word-wrap: break-word;
   // text-transform: capitalize;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 `;

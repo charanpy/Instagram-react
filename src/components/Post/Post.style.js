@@ -40,7 +40,8 @@ export const Navigate = styled(Link)`
 
 export const Name = styled.p`
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
+  text-transform: capitalize;
   margin-left: ${(props) => (props.caption ? '0rem' : '1rem')};
 `;
 

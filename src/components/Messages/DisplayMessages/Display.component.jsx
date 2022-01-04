@@ -11,7 +11,7 @@ import {
 const Display = ({ message: { to, message, seen, sender }, profileId }) => {
   return (
     <MessageContainer position={!(to === profileId)}>
-      <MessageWrap>
+      <MessageWrap position={!(to === profileId)}>
         <Chat>{message}</Chat>
         {sender === profileId && seen.includes(to) && (
           <SeenIcon>

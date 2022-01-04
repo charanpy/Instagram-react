@@ -6,14 +6,14 @@ import Icon from '../../shared/Icon/Icon.component';
 const MessageInput = ({ message, handleSubmit }) => {
   console.log('Input');
   return (
-    <Footer>
+    <Footer onSubmit={handleSubmit}>
       <Input
         name='message'
         placeholder='Type a message'
         ref={message}
         autoComplete='off'
       />
-      <SendMessage onClick={handleSubmit}>
+      <SendMessage type='submit'>
         <Icon className='fas fa-paper-plane' />
       </SendMessage>
     </Footer>

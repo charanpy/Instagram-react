@@ -9,4 +9,5 @@ export const BioContainer = styled.div`
 export const BioDetail = styled.p`
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 `;

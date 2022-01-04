@@ -17,18 +17,17 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-a{
-  margin-left: 3px;
-  font-family: 'Nimbus Sans', sans-serif;
+a {
+  /* margin-left: 3px; */
+  /* font-family: 'Nimbus Sans', sans-serif; */
   color: rgba(66, 133, 244, 1);
 }
-
-@font-face {
-  font-family: 'Billabong';
-  src: local('Billabong'), url(./assets/fonts/Billabong.ttf) format('ttf');
+input {
+  font-family: inherit;
 }
+
 .Toastify__toast-body {
-  font-family: 'Open Sans Condensed', sans-serif !important;
+  font-family: inherit !important;
   font-weight: 400 !important;
   font-size: 1.6rem !important;
 }
@@ -40,13 +39,13 @@ a{
   display: none;
 }
 
-a{
+a {
   color: inherit;
 }
 
-p{
+p {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 .fade-enter {
   opacity: 0;
@@ -64,5 +63,4 @@ p{
 .fade-exit-active {
   opacity: 0;
   transition: opacity 500ms;
-
 }

@@ -27,7 +27,7 @@ const ApiRequest = async (
   isTokenRequired,
   isImage
 ) => {
-  const url = `${ApiRequestMethod.mainURL}${route}`;
+  const url = `${ApiRequestMethod.url}${route}`;
   const request = ApiRequestMethod[methodType];
   const userToken = localStorage.getItem('token');
   if (isTokenRequired && !userToken) {

@@ -1,7 +1,13 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { HeaderContainer, IconContainer, Notify, Button, Name } from './Header.style';
+import {
+  HeaderContainer,
+  IconContainer,
+  Notify,
+  Button,
+  Name,
+} from './Header.style';
 import Brand from '../Brand/Brand.component';
 import Icon from '../Icon/Icon.component';
 import Notification from '../../MainNotification/Navigate/Navigate.container';
@@ -17,9 +23,11 @@ const Header = ({ history, notify, username }) => {
 
   return (
     <HeaderContainer>
-      <Name>
-        <Brand />
-      </Name>
+      <Link to='/'>
+        <Name>
+          <Brand />
+        </Name>
+      </Link>
       <IconContainer>
         <Link to='/'>
           <Icon

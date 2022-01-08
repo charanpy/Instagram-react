@@ -24,14 +24,15 @@ const DisplayContainer = ({ messages, id, profileId }) => {
   }, [messages.length]);
   return (
     <ChatContainer>
-      {messages.length &&
-        messages.map((message) => (
-          // eslint-disable-next-line
-          <div key={message._id}>
-            <Display message={message} profileId={profileId} />
-            <div ref={messageEndRef} />
-          </div>
-        ))}
+      {messages.length
+        ? messages.map((message) => (
+            // eslint-disable-next-line
+            <div key={message._id}>
+              <Display message={message} profileId={profileId} />
+              <div ref={messageEndRef} />
+            </div>
+          ))
+        : ''}
     </ChatContainer>
   );
 };

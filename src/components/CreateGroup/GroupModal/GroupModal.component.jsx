@@ -15,7 +15,7 @@ const GroupModal = ({
   createGroup,
   id,
   profile,
-  navigate
+  navigate,
 }) => {
   console.log('Group Modal');
   return (
@@ -33,27 +33,28 @@ const GroupModal = ({
           <Spinner />
         ) : (
           <UsersContainer>
-            {users.length &&
-              users.map(({ photo, user, username, _id, name }) => (
-                <DisplayUser
-                  key={_id}
-                  onClick={() =>
-                    profile ? navigate(`/${username}`) : createGroup(_id, id)
-                  }
-                  type='create'
-                  group={{
-                    _id,
-                    groupType: 'private',
-                    users: [
-                      {
-                        photo,
-                        user,
-                        username,
-                      },
-                    ],
-                  }}
-                />
-              ))}
+            {users.length
+              ? users.map(({ photo, user, username, _id, name }) => (
+                  <DisplayUser
+                    key={_id}
+                    onClick={() =>
+                      profile ? navigate(`/${username}`) : createGroup(_id, id)
+                    }
+                    type='create'
+                    group={{
+                      _id,
+                      groupType: 'private',
+                      users: [
+                        {
+                          photo,
+                          user,
+                          username,
+                        },
+                      ],
+                    }}
+                  />
+                ))
+              : ''}
           </UsersContainer>
         )}
         <button type='button' onClick={toggleModal}>

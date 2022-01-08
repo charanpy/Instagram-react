@@ -3,7 +3,7 @@ import PrivateRoute from '../../../ApiRoutes/PrivateApi';
 import { setIsCached } from '../../../helpers/hooks/useLocalStorage';
 import SpinnerOverlay from '../../shared/Spinner/SpinnerOverlay.component';
 import PostContainer from '../DisplayPost/Post.container';
-import { SinglePost } from '../Post.style';
+import { NoPost, SinglePost } from '../Post.style';
 
 const DisplayAPostContainer = ({
   match: {
@@ -28,11 +28,26 @@ const DisplayAPostContainer = ({
       }));
     } catch (error) {
       console.log(error);
+      setPost((prev) => ({ ...prev, loading: false }));
     }
   }, [id]);
 
-  console.log(data);
-  const toggleLike = async () => {
+  useEffect(() => {
+    fetchPost();
+  }, [fetchPost]);
+
+  const deletePost = useCallback(async () => {
+    try {
+      await PrivateRoute(`post/${id}`, null, 'delete', true, false);
+      setPost((prev) => ({ ...prev, data: '' }));
+      setIsCached('posts', false);
+      alert('Post Deleted');
+    } catch (error) {
+      console.log(error);
+    }
+  }, [id]);
+
+  const toggleLike = async (userId, socket, isLiked) => {
     try {
       const res = await PrivateRoute(
         `post/like/${data?._id}`,
@@ -42,20 +57,31 @@ const DisplayAPostContainer = ({
         false
       );
       setPost((prev) => ({ ...prev, data: res?.data?.post || '' }));
+      console.log(socket, userId, data?.profile, isLiked);
+      if (socket && userId !== data?.profile?._id && !isLiked) {
+        console.log('User liked');
+        socket.emit('notification', {
+          to: data?.profile?._id,
+          user: userId,
+          post: data?._id,
+        });
+      }
       setIsCached('posts', false);
     } catch (error) {}
   };
-  useEffect(() => {
-    fetchPost();
-  }, [fetchPost]);
+
   return loading ? (
     <SpinnerOverlay text='Fetching Post' />
   ) : data ? (
     <SinglePost>
-      <PostContainer posts={[data]} singlePostHandler={toggleLike} />
+      <PostContainer
+        posts={[data]}
+        singlePostHandler={toggleLike}
+        deletePost={deletePost}
+      />
     </SinglePost>
   ) : (
-    'No Post Found'
+    <NoPost>No Post Found</NoPost>
   );
 };
 

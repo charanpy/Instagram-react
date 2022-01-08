@@ -1,7 +1,11 @@
 import React from 'react';
 import { formatDistance } from 'date-fns';
 import ProfileImage from '../../shared/ProfileImage/ProfileImage.component';
-import { ShowNotif } from '../../MainNotification/Notification.style';
+import {
+  IconContainer,
+  ShowDelete,
+  ShowNotif,
+} from '../../MainNotification/Notification.style';
 
 import {
   Date as Time,
@@ -28,6 +32,8 @@ const Post = ({
   id,
   postId,
   isLiked,
+  showDelete,
+  deletePost,
 }) => {
   console.log(postId);
   const time = formatDistance(new Date(createdAt).getTime(), new Date(), {
@@ -46,9 +52,18 @@ const Post = ({
       </Navigate>
 
       <UserPost src={post} />
-      <Button onClick={() => submitHandler(id, postId, isLiked)}>
-        <ShowNotif hasNotification={isLiked} className='fas fa-heart' />
-      </Button>
+      <IconContainer>
+        <Button onClick={() => submitHandler(id, postId, isLiked)}>
+          <ShowNotif hasNotification={isLiked} className='fas fa-heart' />
+        </Button>
+        {showDelete ? (
+          <Button onClick={deletePost}>
+            <ShowDelete className='fas fa-trash' />
+          </Button>
+        ) : (
+          ''
+        )}
+      </IconContainer>
       {likes.length ? (
         <Like>
           {likes.length > 1 ? `${likes.length} likes` : `${likes.length} like`}

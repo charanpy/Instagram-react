@@ -95,3 +95,9 @@ export const Button = styled.button`
   background: transparent;
   text-align: initial;
 `;
+
+export const NoPost = styled.h1`
+  text-align: center;
+  margin: 5rem 0;
+  font-size: 2rem;
+`;

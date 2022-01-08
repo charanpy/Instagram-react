@@ -5,6 +5,7 @@ const ApiRequestMethod = {
   put: axios.put,
   get: axios.get,
   patch: axios.patch,
+  delete: axios.delete,
   url: process.env.REACT_APP_API,
   mainURL: process.env.REACT_APP_API,
 };

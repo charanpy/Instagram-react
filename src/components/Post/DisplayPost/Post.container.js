@@ -12,40 +12,44 @@ const PostContainer = ({
   id: userId,
   likePostStart: likePost,
   singlePostHandler = false,
+  deletePost,
 }) => {
+  const { socket } = React.useContext(SocketContext);
   const submitHandler = (id, postId, isLiked) => {
-    if (singlePostHandler) return singlePostHandler(userId);
+    if (singlePostHandler) return singlePostHandler(userId, socket, isLiked);
     likePost({ id, postId, socket, userId, isLiked });
   };
-  const { socket } = React.useContext(SocketContext);
   return (
     <PostsContainer>
-      {posts.length &&
-        posts.map(
-          ({
-            createdAt,
-            caption = null,
-            image,
-            profile: { name, username, photo, _id },
-            likes,
-            _id: postId,
-          }) => (
-            <DisplayPost
-              key={postId}
-              post={image[0] && image[0]?.url}
-              name={name}
-              username={username}
-              photo={photo?.secure_url || photo}
-              caption={caption}
-              createdAt={createdAt}
-              likes={likes}
-              id={_id}
-              postId={postId}
-              isLiked={likes.includes(userId)}
-              submitHandler={submitHandler}
-            />
+      {posts.length
+        ? posts.map(
+            ({
+              createdAt,
+              caption = null,
+              image,
+              profile: { name, username, photo, _id },
+              likes,
+              _id: postId,
+            }) => (
+              <DisplayPost
+                key={postId}
+                post={image[0] && image[0]?.url}
+                name={name}
+                username={username}
+                photo={photo?.secure_url || photo}
+                caption={caption}
+                createdAt={createdAt}
+                likes={likes}
+                id={_id}
+                postId={postId}
+                isLiked={likes.includes(userId)}
+                submitHandler={submitHandler}
+                showDelete={singlePostHandler && userId === _id}
+                deletePost={deletePost}
+              />
+            )
           )
-        )}
+        : ''}
     </PostsContainer>
   );
 };

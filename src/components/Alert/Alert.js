@@ -6,12 +6,13 @@ import { selectAlertMessage } from '../../redux-sagas/alert/alert.selector';
 import Toaster from './Toaster.component';
 
 const Alert = ({ alert }) =>
-  alert.length &&
-  alert.map(({ id, msg, success }) => (
-    <div key={id}>
-      <Toaster message={msg} id={id} success={success || false} />
-    </div>
-  ));
+  alert.length
+    ? alert.map(({ id, msg, success }) => (
+        <div key={id}>
+          <Toaster message={msg} id={id} success={success || false} />
+        </div>
+      ))
+    : '';
 
 Alert.propTypes = {
   alert: PropTypes.arrayOf(

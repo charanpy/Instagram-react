@@ -8,6 +8,11 @@ export const NavigateUser = styled(Link)`
   font-family: inherit;
 `;
 
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 export const ShowNotif = styled.i`
   font-size: 2.3rem;
   margin-right: 2.8rem;
@@ -16,6 +21,12 @@ export const ShowNotif = styled.i`
   color: ${(props) => (props.hasNotification ? '#f2003c' : props.theme.icon)};
 `;
 
+export const ShowDelete = styled.i`
+  font-size: 2rem;
+  padding-left: 0;
+  cursor: pointer;
+  color: #f2003c;
+`;
 export const Container = styled.section`
   margin-top: 5rem;
   overflow-y: scroll;

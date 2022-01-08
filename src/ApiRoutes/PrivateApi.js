@@ -39,10 +39,9 @@ const ApiRequest = async (
     headers,
   };
   // eslint-disable-next-line
-  const response =
-    methodType !== 'get'
-      ? await request(url, bodyOfRequest, config)
-      : await request(url, config);
+  const response = !(methodType === 'get' || methodType === 'delete')
+    ? await request(url, bodyOfRequest, config)
+    : await request(url, config);
 
   return response;
 };

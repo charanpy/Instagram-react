@@ -12,6 +12,7 @@ export const ActivityContainer = styled.div`
 export const UserActivityWrap = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 1rem;
 `;
 
 export const Count = styled.p`

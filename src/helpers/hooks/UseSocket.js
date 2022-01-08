@@ -1,4 +1,5 @@
 import { useEffect, useCallback } from 'react';
+import { setIsCached } from './useLocalStorage';
 
 const UseSocket = (socket, send, setNotification) => {
   const sendRealTimeMessage = useCallback(
@@ -10,6 +11,7 @@ const UseSocket = (socket, send, setNotification) => {
 
   const sendRealTimeNotification = useCallback(() => {
     console.log('you got new notif');
+    setIsCached('notifications', false);
     setNotification();
   }, [setNotification]);
 

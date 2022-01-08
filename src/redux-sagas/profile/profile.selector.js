@@ -23,6 +23,12 @@ export const selectProfileId = createSelector(
   (profile) => profile.userProfile?._id
 );
 
+export const selectUserId = createSelector(
+  [selectProfile],
+  // eslint-disable-next-line
+  (profile) => profile.userProfile?.user
+);
+
 export const selectIsLoading = createSelector(
   [selectProfile],
   (profile) => profile.loading

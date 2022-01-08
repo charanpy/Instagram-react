@@ -11,6 +11,9 @@ const Chat = lazy(() => import('../Pages/Chat/Chat.container'));
 const Message = lazy(() => import('../Pages/Messages/Messages.container'));
 const Profile = lazy(() => import('../Pages/Profile/Profile.container'));
 const EditProfile = lazy(() => import('../Pages/EditProfile/Edit.container'));
+const DisplayAPost = lazy(() =>
+  import('../components/Post/DisplayAPost/DisplayAPost.container')
+);
 const Notify = lazy(
   () => import('../Pages/Notification/Notification.container')
   // eslint-disable-next-line
@@ -28,6 +31,7 @@ const AppRoute = () => (
         <PrivateRoute exact path='/me/notification' component={Notify} />
         <PrivateRoute exact path='/message/:id' component={Message} />
         <PrivateRoute exact path='/profile/edit' component={EditProfile} />
+        <PrivateRoute exact path='/post/:id' component={DisplayAPost} />
         <PrivateRoute exact path='/:name' component={Profile} />
       </Suspense>
     </ErrorBoundary>

@@ -11,6 +11,7 @@ import { GlobalStyle } from './helpers/CommonStyles';
 
 const App = ({ theme }) => {
   console.log('APP');
+
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <Header />

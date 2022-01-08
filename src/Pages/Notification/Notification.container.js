@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchNotificationStart } from '../../redux-sagas/profile/profile.action';
 import Notification from './Notification.page';
+import { getIsCached } from '../../helpers/hooks/useLocalStorage';
 
 const NotificationContainer = ({
   fetchNotificationStart: fetchNotification,
 }) => {
   useEffect(() => {
-    fetchNotification();
+    if (!getIsCached()?.notifications) fetchNotification();
   }, [fetchNotification]);
   return <Notification />;
 };

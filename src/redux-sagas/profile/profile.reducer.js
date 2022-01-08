@@ -30,7 +30,9 @@ const likePost = (state, postId, post) => {
 
 const optimizeLikePost = (state, postId, userId) => {
   const getPostIndex = state.findIndex((posts) => posts._id === postId);
-  if (state[getPostIndex].likes.includes(userId)) {
+  console.log(postId, userId, getPostIndex);
+
+  if (state?.[getPostIndex]?.likes?.includes(userId)) {
     const likes = state[getPostIndex].likes.filter((like) => like !== userId);
     console.log(likes, 33);
     const modifiedLike = {

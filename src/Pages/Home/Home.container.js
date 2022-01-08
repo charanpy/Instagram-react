@@ -6,6 +6,7 @@ import { getPostStart } from '../../redux-sagas/profile/profile.action';
 import { selectProfileId as selectUserId } from '../../redux-sagas/profile/profile.selector';
 import Home from './Home.page';
 import { SocketContext } from '../../context/socket';
+import { getIsCached } from '../../helpers/hooks/useLocalStorage';
 
 const HomeContainer = ({ userId, getPostStart: getPost }) => {
   const { socket } = useContext(SocketContext);
@@ -13,7 +14,7 @@ const HomeContainer = ({ userId, getPostStart: getPost }) => {
   useEffect(() => {
     if (userId) {
       socket.emit('authenticated', userId);
-      getPost();
+      if (!getIsCached()?.posts) getPost();
     }
   }, [socket, userId, getPost]);
   return <Home />;

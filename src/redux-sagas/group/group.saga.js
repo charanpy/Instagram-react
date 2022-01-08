@@ -20,6 +20,7 @@ import {
   setMessageSeenFailure,
 } from './group.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
+import { setIsCached } from '../../helpers/hooks/useLocalStorage';
 
 const groupObject = (id, groupArray) => {
   if (!groupArray) {
@@ -53,6 +54,7 @@ export function* getGroup({ payload }) {
     console.log(response, payload);
     const group = yield call(groupObject, payload, response.data.groups);
     yield put(displayGroupSuccess(group));
+    yield call(setIsCached, 'groups', true);
   } catch (error) {
     console.log(error, error?.response, error?.response?.data);
     yield put(displayGroupFailure());

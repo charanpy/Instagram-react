@@ -6,11 +6,12 @@ import { displayGroupStart } from '../../redux-sagas/group/group.action';
 import { selectUserProfile } from '../../redux-sagas/profile/profile.selector';
 import Group from './Group.component';
 import { ProfilePropTypes } from '../../helpers/helpers';
+import { getIsCached } from '../../helpers/hooks/useLocalStorage';
 
 const GroupContainer = ({ profile, displayGroupStart: displayGroup }) => {
   useEffect(() => {
     const { _id: id } = profile;
-    displayGroup(id);
+    if (!getIsCached()?.groups) displayGroup(id);
   }, [displayGroup, profile]);
   return <Group profile={profile} />;
 };

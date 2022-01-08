@@ -7,9 +7,14 @@ import DisplayPost from './Post.component';
 import { SocketContext } from '../../../context/socket';
 import { PostsContainer } from '../Post.style';
 
-const PostContainer = ({ posts, id: userId, likePostStart: likePost }) => {
-  console.log('');
+const PostContainer = ({
+  posts,
+  id: userId,
+  likePostStart: likePost,
+  singlePostHandler = false,
+}) => {
   const submitHandler = (id, postId, isLiked) => {
+    if (singlePostHandler) return singlePostHandler(userId);
     likePost({ id, postId, socket, userId, isLiked });
   };
   const { socket } = React.useContext(SocketContext);
@@ -47,6 +52,7 @@ const PostContainer = ({ posts, id: userId, likePostStart: likePost }) => {
 
 const mapStateToProps = createStructuredSelector({
   id: selectProfileId,
+  // user: selectUserId,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -27,8 +27,9 @@ const Post = ({
   submitHandler,
   id,
   postId,
-  isLiked
+  isLiked,
 }) => {
+  console.log(postId);
   const time = formatDistance(new Date(createdAt).getTime(), new Date(), {
     addSuffix: true,
     includeSeconds: true,

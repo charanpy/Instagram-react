@@ -13,7 +13,10 @@ import {
   UsernameWrap,
   Username,
   ProfileImageContainer,
+  DisplayPost,
+  PostImage,
 } from './Profile.style';
+import { Link } from 'react-router-dom';
 
 const Profile = ({
   profile: {
@@ -56,6 +59,15 @@ const Profile = ({
             />
           </UserDetailWrap>
         </UserInfo>
+        <DisplayPost>
+          {posts?.length
+            ? posts.map((post) => (
+                <Link to={`/post/${post?._id}`} key={post?._id}>
+                  <PostImage alt='posts' src={post?.image?.[0]?.url} />
+                </Link>
+              ))
+            : ''}
+        </DisplayPost>
       </ProfileWrapper>
     </>
   );

@@ -9,10 +9,23 @@ export const PostsContainer = styled.div`
   ${flex};
   width: 100%;
   margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Label = styled.p`
   font-size: 2rem;
+`;
+
+export const SinglePost = styled.div`
+  /* display: flex; */
+  /* justify-content: center; */
+  width: 50%;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Header = styled.h1`

@@ -20,6 +20,7 @@ import {
   likePostSuccess,
 } from './profile.action';
 import PrivateApiRoute from '../../ApiRoutes/PrivateApi';
+import { setIsCached } from '../../helpers/hooks/useLocalStorage';
 
 export function* uploadImage({ payload }) {
   try {
@@ -137,6 +138,7 @@ export function* getNotification() {
     );
     console.log(response);
     yield put(fetchNotificationSuccess(response.data?.notifications));
+    yield call(setIsCached, 'notifications', true);
   } catch (error) {
     console.log(error.response);
     yield put(fetchNotificationFailure());
@@ -171,6 +173,7 @@ export function* createPost({ payload }) {
     console.log(response);
     yield put(createPostSuccess());
     alert('Post created successfully');
+    yield call(setIsCached, 'posts', false);
   } catch (error) {
     console.log(error, error.response);
     const id = getUniqueId();
@@ -194,6 +197,7 @@ export function* getPost() {
     );
     console.log(response);
     yield put(getPostSuccess(response.data.posts));
+    yield call(setIsCached, 'posts', true);
   } catch (error) {
     console.log(error);
     yield put(getPostFailure());

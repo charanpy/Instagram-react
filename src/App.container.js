@@ -21,6 +21,7 @@ import UseTheme from './helpers/hooks/UseTheme';
 import UseSocket from './helpers/hooks/UseSocket';
 import App from './App';
 import Spinner from './components/shared/Spinner/SpinnerOverlay.component';
+import useLocalStorage from './helpers/hooks/useLocalStorage';
 
 const AppContainer = ({
   loadUserStart: loadUser,
@@ -34,6 +35,7 @@ const AppContainer = ({
   setNotificationStart: setNotification,
 }) => {
   const { socket } = useContext(SocketContext);
+  useLocalStorage();
   UseAuth(loadUser, setAuth, history, getNotification);
   UseSocket(socket, getMessage, setNotification);
   UseTheme(setThemeLight);

@@ -29,6 +29,7 @@ export const ShowDelete = styled.i`
 `;
 export const Container = styled.section`
   margin-top: 5rem;
+  padding: 1rem;
   overflow-y: scroll;
 `;
 

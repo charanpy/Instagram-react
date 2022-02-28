@@ -1,16 +1,30 @@
 # Instagram-react
-### Public Post
 
-### Edit Profile
+### Backend
+[Instagram Backend](https://github.com/charanpy/instagram-clone-API)
 
-### Upload Crop Images
 
-### Like/unlike
+![Home](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/post.png)
+## Feautures
 
-### Real time chat
+### jwt authentication 
+### create,delete post
+### upload,update.delete profile pic
+### follow/unfollow,follow-request,accept-request
+###  comment,reply,like-comment,like-comment-reply
+### save post to bookmark
 
-### Real time notifications (Message/Like/Follow)
+## Notification
+![Notification](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/notif.png)
 
-### Follow/UnFollow
+## Chat Panel
+![ChatPanel](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/chat.png)
 
-### Search
+## Chat
+![Chat](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/convo.png)
+
+## Profile
+![Profile](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/profile.png)
+
+## Post
+![Post](https://raw.github.com/charanpy/instagram-clone-API/master/screenshots/cretaePost.png)
